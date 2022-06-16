@@ -10,6 +10,7 @@
 game_t *malloc_game(void)
 {
     game_t *game = malloc(sizeof(game_t));
+    game->music = malloc(SIZE * sizeof(double));
     game->scenes = malloc(sizeof(scene_t *) * SIZE);
     game->init = malloc(sizeof(init_t *) * SIZE_GAME_OBJ);
 

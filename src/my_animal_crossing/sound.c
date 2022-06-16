@@ -7,36 +7,32 @@
 
 #include "my_animal_crossing.h"
 
-static void what_music_play(game_t *game)
+static void what_music_play(game_t *game, int music_scene, int numero_scenes)
 {
-    switch (game->nb_scenes) {
-    case 0 : game->music_menu = true;
-            game->music_game = false;
-            game->music_magasin = false;
-        break;
-    case 1 : game->music_menu = false;
-            game->music_game = true;
-            game->music_magasin = false;
-        break;
-    case 2  : game->music_menu = false;
-            game->music_game = false;
-            game->music_magasin = true;
-        break;
+    if (game->music[numero_scenes] == false) {
+        sfMusic_play(game->scenes[numero_scenes]->sound[music_scene]->sound);
+        sfMusic_setLoop(game->scenes[numero_scenes]->sound[music_scene]->sound, sfTrue);
+        sfMusic_setVolume(game->scenes[numero_scenes]->sound[music_scene]->sound, game->nb_volume);
+        for (int i = 0; i < SIZE; i++) {
+            if (i == numero_scenes)
+                game->music[i] = true;
+            else
+                game->music[i] = false;
+        }
     }
 }
 
-static void play_music(game_t *game, sounds_t *music)
+static void play_music(game_t *game)
 {
-    sfMusic_play(music->sound);
-    sfMusic_setLoop(music->sound, sfTrue);
-    sfMusic_setVolume(music->sound, 30);
-    what_music_play(game);
+    int music_scene = game->scenes[game->nb_scenes]->sound[game->nb_scenes]->num_music;
+    int numero_scenes = game->nb_scenes;
+    what_music_play(game, music_scene, numero_scenes);
 }
+
 
 void set_music(game_t *game, sounds_t *sound)
 {
     if (game->sounds_on == true) {
-        sounds_t *music = game->scenes[game->nb_scenes]->sound[sound->num_music];
-        play_music(game, music);
+        play_music(game);
     }
 }

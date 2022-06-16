@@ -81,7 +81,6 @@
         int num_music;
         sfMusic *sound;
         int music_play;
-        int nb_volume;
     } sounds_t;
 
     typedef struct scene_s {
@@ -109,9 +108,8 @@
         scene_t **scenes;
         init_t **init;
         int nb_scenes;
-        bool music_menu;
-        bool music_game;
-        bool music_magasin;
+        int nb_volume;
+        bool *music;
         bool sounds_on;
     } game_t;
 

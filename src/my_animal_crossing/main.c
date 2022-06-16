@@ -9,22 +9,9 @@
 
 void destroy_music(game_t *game)
 {
-    // printf("game->scenes[0]=\t%p\n", game->scenes[0]);
-    // printf("game->scenes[0]->sound[0]=\t%p\n", game->scenes[0]->sound[0]);
-    // printf("sound first %p\n", game->scenes[0]->sound[0]->sound);
-    printf("drestroy_music_magasin %p\n", game->scenes[MAGASIN]);
-    printf("drestroy_music_game %p\n", game->scenes[GAME]);
-    printf("drestroy_music_pause %p\n", game->scenes[PAUSE]);
-    printf("drestroy_music_menu %p\n", game->scenes[MENU]);
-    for(int i = 0; i < SIZE; i++) {
-    printf("i=%d\n", i);
-    printf("print nb_sound %i\n", game->scenes[1]->nb_sound);
-        if (game->scenes[i]->nb_sound >= 1) {
-            printf("sound test \n");
-            printf("sound %p\n", game->scenes[i]->sound[i]->sound);
+    for(int i = 0; i < SIZE; i++)
+        if (game->scenes[i]->nb_sound >= 1)
             sfMusic_destroy(game->scenes[i]->sound[i]->sound);
-        }
-    }
 }
 
 static sfRenderWindow * create_renderwindow(unsigned int x, unsigned int y,
@@ -39,7 +26,7 @@ unsigned int bpp, char *title)
 static void lauch_game(animal_crossing_t *animal_crossing, game_t *game, sounds_t *sound)
 {
     sound->num_music = 0;
-    sound->nb_volume = 100;
+    game->nb_volume = 100;
     while (sfRenderWindow_isOpen(animal_crossing->window)) {
         if (game->nb_scenes != MAGASIN && game->nb_scenes != PAUSE)
             sfRenderWindow_clear(animal_crossing->window, sfBlack);

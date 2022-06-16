@@ -31,5 +31,4 @@ void init_game(game_t *game)
     game->scenes[GAME] = malloc_scene(game->scenes[GAME]);
     //init_music_game(game->scenes[GAME]->sound);
     //init_game_like(game->scenes[GAME]->pictures);
-    printf("scene game %p\n", game->scenes[GAME]);
 }

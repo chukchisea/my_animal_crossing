@@ -19,5 +19,4 @@ void init_magasin(game_t *game)
     game->scenes[MAGASIN]->nb_textes = 0;
     game->scenes[MAGASIN]->nb_sound = 0;
     game->scenes[MAGASIN] = malloc_scene(game->scenes[MAGASIN]);
-    printf("scene magasin %p\n", game->scenes[MAGASIN]);
 }

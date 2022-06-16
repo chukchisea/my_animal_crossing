@@ -13,7 +13,6 @@ void init_all(game_t *game)
     init_game(game);
     init_magasin(game);
     init_pause(game);
-    game->music_game = false;
-    game->music_magasin = false;
-    game->music_menu = false;
+    for (int i = 0; i < SIZE; i++)
+        game->music[i] = false;
 }

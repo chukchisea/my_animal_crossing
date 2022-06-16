@@ -19,5 +19,4 @@ void init_pause(game_t *game)
     game->scenes[PAUSE]->nb_textes = 0;
     game->scenes[PAUSE]->nb_sound = 0;
     game->scenes[PAUSE] = malloc_scene(game->scenes[PAUSE]);
-    printf("scene pause%p\n", game->scenes[PAUSE]);
 }

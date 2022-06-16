@@ -29,6 +29,8 @@ static scene_t *malloc_scene_next(scene_t *scene)
         scene->pictures[i]->hide = true;
     } for (int i = 0; i != scene->nb_sound; i++) {
         scene->sound[i] = malloc(sizeof(sounds_t));
+        scene->sound[i]->music_play = 0;
+        scene->sound[i]->num_music = 0;
     }
     return malloc_scene_next_2(scene);
 }

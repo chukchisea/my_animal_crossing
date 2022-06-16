@@ -31,7 +31,7 @@ static void init_menu_set_button(game_t *game)
 
 static void init_music_menu(sounds_t **sounds)
 {
-    sounds[0]->sound = sfMusic_createFromFile("sound/Menu_music.ogg");
+    sounds[0]->sound = sfMusic_createFromFile("sound/Menu_1.ogg");
 }
 
 static void init_menu_set_decors(game_t *game)
@@ -55,5 +55,4 @@ void init_menu(game_t *game)
     init_music_menu(game->scenes[MENU]->sound);
     init_menu_set_decors(game);
     init_menu_set_button(game);
-        printf("scene menu %p\n", game->scenes[MENU]);
 }
